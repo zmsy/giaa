@@ -24,6 +24,6 @@ type Player struct {
 
 // LastUpdated represents the time that the ETL was last run.
 type LastUpdated struct {
-	id         int
-	updateTime time.Time
+	Id         int
+	UpdateTime time.Time
 }
