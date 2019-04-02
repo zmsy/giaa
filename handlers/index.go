@@ -38,7 +38,7 @@ func queryLastUpdated() (db.LastUpdated, error) {
 	rows, err := db.Conn.Query(`
 		SELECT
 			id,
-			last_updated
+			updated_time
 		FROM fantasy.etl_updates
 		`)
 	if err != nil {
