@@ -12,8 +12,8 @@ import (
 	"github.com/zmsy/giaa/db"
 )
 
-// IndexHandler simply returns the last updated timestamp
-func IndexHandler(w http.ResponseWriter, r *http.Request) {
+// LastUpdatedHandler simply returns the last updated timestamp
+func LastUpdatedHandler(w http.ResponseWriter, r *http.Request) {
 
 	// get the lastUpdatedTime from the database
 	updt, err := queryLastUpdated()
