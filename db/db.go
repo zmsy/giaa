@@ -14,7 +14,8 @@ const (
 	dbname = "DBNAME"
 )
 
-var conn *sql.DB
+// Conn is the universal database connection object
+var Conn *sql.DB
 
 // Connect creates a connection to postgres and stores in db.conn.
 func Connect() {
@@ -25,11 +26,11 @@ func Connect() {
 		config[dbhost], config[dbport],
 		config[dbuser], config[dbpass], config[dbname])
 
-	conn, err = sql.Open("postgres", psqlInfo)
+	Conn, err = sql.Open("postgres", psqlInfo)
 	if err != nil {
 		panic(err)
 	}
-	err = conn.Ping()
+	err = Conn.Ping()
 	if err != nil {
 		panic(err)
 	}
