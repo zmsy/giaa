@@ -14,28 +14,28 @@ import (
 
 // Player represents a single batter in the players database.
 type Player struct {
-	id             int
-	fullname       string
-	position       string
-	team           string
-	percentowned   float32
-	percentstarted float32
+	ID             int     `json:"id"`
+	Fullname       string  `json:"fullName"`
+	Position       string  `json:"position"`
+	Team           string  `json:"team"`
+	PercentOwned   float32 `json:"percentOwned"`
+	PercentStarted float32 `json:"percentStarted"`
 }
 
 // LastUpdated represents the time that the ETL was last run.
 type LastUpdated struct {
-	ID         int
-	UpdateTime time.Time
+	ID         int       `json:"id"`
+	UpdateTime time.Time `json:"updateTime"`
 }
 
 // RosterEntry represents a single player on a team.
 type RosterEntry struct {
-	ID              int
-	EspnID          int
-	FullName        string
-	AcquisitionDate time.Time
-	AcquisitionType string
-	Active          bool
-	Droppable       bool
-	InjuryStatus    string
+	ID              int       `json:"id"`
+	EspnID          int       `json:"espnId"`
+	FullName        string    `json:"fullName"`
+	AcquisitionDate time.Time `json:"acquisitionDate"`
+	AcquisitionType string    `json:"acquisitionType"`
+	Active          bool      `json:"active"`
+	Droppable       bool      `json:"droppable"`
+	InjuryStatus    string    `json:"injuryStatus"`
 }
