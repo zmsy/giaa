@@ -47,7 +47,7 @@ func queryLastUpdated() (db.LastUpdated, error) {
 	defer rows.Close()
 	for rows.Next() {
 		err = rows.Scan(
-			&lastUpdated.Id,
+			&lastUpdated.ID,
 			&lastUpdated.UpdateTime,
 		)
 		if err != nil {

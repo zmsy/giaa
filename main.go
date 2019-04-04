@@ -20,5 +20,6 @@ func main() {
 	db.Connect()
 	router := mux.NewRouter()
 	router.HandleFunc("/api/last_updated", handlers.LastUpdatedHandler)
+	router.HandleFunc("/api/rosters", handlers.RostersHandler)
 	log.Fatal(http.ListenAndServe(":8000", router))
 }

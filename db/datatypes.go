@@ -24,6 +24,18 @@ type Player struct {
 
 // LastUpdated represents the time that the ETL was last run.
 type LastUpdated struct {
-	Id         int
+	ID         int
 	UpdateTime time.Time
+}
+
+// RosterEntry represents a single player on a team.
+type RosterEntry struct {
+	ID              int
+	EspnID          int
+	FullName        string
+	AcquisitionDate time.Time
+	AcquisitionType string
+	Active          bool
+	Droppable       bool
+	InjuryStatus    string
 }
