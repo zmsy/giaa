@@ -22,5 +22,6 @@ func main() {
 	router.HandleFunc("/api/last_updated", handlers.LastUpdatedHandler)
 	router.HandleFunc("/api/rosters", handlers.RostersHandler)
 	router.HandleFunc("/api/rosters/{teamId}", handlers.RosterHandler)
+	router.HandleFunc("/api/teams", handlers.TeamsHandler)
 	log.Fatal(http.ListenAndServe(":8000", router))
 }
