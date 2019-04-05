@@ -15,7 +15,7 @@ type Response struct {
 }
 
 // SuccessResponse is a function used to return a json.Marshal'd byte array rep
-func SuccessResponse(data interface{}) ([]byte, error) {
+func SuccessResponse(data interface{}) (string, error) {
 	resp := Response{}
 	resp.Status = "success"
 	resp.Message = ""
@@ -23,14 +23,14 @@ func SuccessResponse(data interface{}) ([]byte, error) {
 
 	out, err := json.Marshal(resp)
 	if err != nil {
-		return nil, err
+		return "", err
 	}
-	return out, err
+	return string(out), err
 }
 
 // ErrorResponse is used to pass back an empty container in the event that something
 // could not be found.
-func ErrorResponse(errorMessage string) ([]byte, error) {
+func ErrorResponse(errorMessage string) (string, error) {
 	resp := Response{}
 	resp.Status = "error"
 	resp.Message = errorMessage
@@ -38,7 +38,7 @@ func ErrorResponse(errorMessage string) ([]byte, error) {
 
 	out, err := json.Marshal(resp)
 	if err != nil {
-		return nil, err
+		return "", err
 	}
-	return out, err
+	return string(out), err
 }

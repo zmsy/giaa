@@ -31,7 +31,7 @@ type LastUpdated struct {
 // RosterEntry represents a single player on a team.
 type RosterEntry struct {
 	ID              int       `json:"id"`
-	EspnID          int       `json:"espnId"`
+	TeamID          int       `json:"teamId"`
 	FullName        string    `json:"fullName"`
 	AcquisitionDate time.Time `json:"acquisitionDate"`
 	AcquisitionType string    `json:"acquisitionType"`

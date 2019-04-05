@@ -5,11 +5,11 @@ Handler functions for specific routes on the API.
 package handlers
 
 import (
-	"encoding/json"
 	"fmt"
 	"net/http"
 
 	"github.com/zmsy/giaa/db"
+	"github.com/zmsy/giaa/responses"
 )
 
 // LastUpdatedHandler simply returns the last updated timestamp
@@ -18,19 +18,20 @@ func LastUpdatedHandler(w http.ResponseWriter, r *http.Request) {
 	// get the lastUpdatedTime from the database
 	updt, err := queryLastUpdated()
 	if err != nil {
-		http.Error(w, err.Error(), 500)
+		errorOut, _ := responses.ErrorResponse(err.Error())
+		http.Error(w, errorOut, 500)
 		return
 	}
 
 	// coerce the elements into JSON
-	out, err := json.Marshal(updt)
+	out, err := responses.SuccessResponse(updt)
 	if err != nil {
-		http.Error(w, err.Error(), 500)
+		errorOut, _ := responses.ErrorResponse(err.Error())
+		http.Error(w, errorOut, 500)
 		return
 	}
 
-	// write the output back to the http response
-	fmt.Fprintf(w, string(out))
+	fmt.Fprintf(w, out)
 }
 
 func queryLastUpdated() (db.LastUpdated, error) {
