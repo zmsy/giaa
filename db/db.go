@@ -1,9 +1,10 @@
 package db
 
 import (
-	"database/sql"
 	"fmt"
 	"os"
+
+	"github.com/jmoiron/sqlx"
 )
 
 const (
@@ -15,7 +16,7 @@ const (
 )
 
 // Conn is the universal database connection object
-var Conn *sql.DB
+var Conn *sqlx.DB
 
 // Connect creates a connection to postgres and stores in db.conn.
 func Connect() {
@@ -25,8 +26,7 @@ func Connect() {
 		"password=%s dbname=%s",
 		config[dbhost], config[dbport],
 		config[dbuser], config[dbpass], config[dbname])
-
-	Conn, err = sql.Open("postgres", psqlInfo)
+	Conn, err = sqlx.Connect("postgres", psqlInfo)
 	if err != nil {
 		panic(err)
 	}

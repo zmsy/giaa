@@ -74,16 +74,12 @@ func RosterHandler(w http.ResponseWriter, r *http.Request) {
 // queryRostersAll gets the entirety of the roster list
 // from the database.
 func queryRostersAll() ([]db.RosterEntry, error) {
-	rows, err := db.Conn.Query(`
-		select id, team_espn_id, fullname, acquisitiondate,
+	rosterEntries := []db.RosterEntry{}
+	err := db.Conn.Select(&rosterEntries,
+		`select id, team_espn_id, fullname, acquisitiondate,
 			acquisitiontype, active, droppable, injurystatus
-		from fantasy.rosters
-	`)
-	if err != nil {
-		return nil, err
-	}
-	defer rows.Close()
-	return parseRowsToRosterEntries(rows)
+		from fantasy.rosters`)
+	return rosterEntries, err
 }
 
 func queryRostersByTeamID(teamID int) ([]db.RosterEntry, error) {
