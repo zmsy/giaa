@@ -23,5 +23,6 @@ func main() {
 	router.HandleFunc("/api/rosters", handlers.RostersHandler)
 	router.HandleFunc("/api/rosters/{teamId}", handlers.RosterHandler)
 	router.HandleFunc("/api/teams", handlers.TeamsHandler)
+	router.HandleFunc("/api/players/{playerId}", handlers.PlayersHandler)
 	log.Fatal(http.ListenAndServe(":8000", router))
 }

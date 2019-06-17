@@ -15,12 +15,12 @@ import (
 
 // Player represents a single batter in the players database.
 type Player struct {
-	ID             int             `json:"id"`
-	Fullname       sql.NullString  `json:"fullName"`
-	Position       sql.NullString  `json:"position"`
-	Team           sql.NullString  `json:"team"`
-	PercentOwned   sql.NullFloat64 `json:"percentOwned"`
-	PercentStarted sql.NullFloat64 `json:"percentStarted"`
+	ID             int             `json:"id" db:"id"`
+	Fullname       sql.NullString  `json:"fullName" db:"fullname"`
+	Position       sql.NullString  `json:"position" db:"position"`
+	Team           sql.NullInt64   `json:"team" db:"proteamid"`
+	PercentOwned   sql.NullFloat64 `json:"percentOwned" db:"percentowned"`
+	PercentStarted sql.NullFloat64 `json:"percentStarted" db:"percentstarted"`
 }
 
 // LastUpdated represents the time that the ETL was last run.
@@ -43,21 +43,21 @@ type RosterEntry struct {
 
 // Team represents a fantasy team in the league.
 type Team struct {
-	ID           int             `json:"id"`
-	EspnID       sql.NullInt64   `json:"espnId"`
-	Name         sql.NullString  `json:"name"`
-	Abbrev       sql.NullString  `json:"abbrev"`
-	DivisionID   sql.NullString  `json:"divisionId"`
-	Logo         sql.NullString  `json:"logo"`
-	GamesBack    sql.NullFloat64 `json:"gamesBack"`
-	Wins         sql.NullInt64   `json:"wins"`
-	Losses       sql.NullInt64   `json:"losses"`
-	Ties         sql.NullInt64   `json:"ties"`
-	Acquisitions sql.NullInt64   `json:"acquisitions"`
-	Drops        sql.NullInt64   `json:"drops"`
-	Trades       sql.NullInt64   `json:"trades"`
-	MoveToActive sql.NullInt64   `json:"moveToActive"`
-	MoveToIR     sql.NullInt64   `json:"moveToIr"`
-	FirstName    sql.NullString  `json:"firstName"`
-	LastName     sql.NullString  `json:"lastName"`
+	ID           int             `json:"id" db:"id"`
+	EspnID       sql.NullInt64   `json:"espnId" db:"espn_id"`
+	Name         sql.NullString  `json:"name" db:"name"`
+	Abbrev       sql.NullString  `json:"abbrev" db:"abbrev"`
+	DivisionID   sql.NullString  `json:"divisionId" db:"divisionid"`
+	Logo         sql.NullString  `json:"logo" db:"logo"`
+	GamesBack    sql.NullFloat64 `json:"gamesBack" db:"gamesback"`
+	Wins         sql.NullInt64   `json:"wins" db:"wins"`
+	Losses       sql.NullInt64   `json:"losses" db:"losses"`
+	Ties         sql.NullInt64   `json:"ties" db:"ties"`
+	Acquisitions sql.NullInt64   `json:"acquisitions" db:"acquisitions"`
+	Drops        sql.NullInt64   `json:"drops" db:"drops"`
+	Trades       sql.NullInt64   `json:"trades" db:"trades"`
+	MoveToActive sql.NullInt64   `json:"moveToActive" db:"movetoactive"`
+	MoveToIR     sql.NullInt64   `json:"moveToIr" db:"movetoir"`
+	FirstName    sql.NullString  `json:"firstName" db:"firstname"`
+	LastName     sql.NullString  `json:"lastName" db:"lastname"`
 }
