@@ -22,9 +22,6 @@ func SuccessResponse(data interface{}) (string, error) {
 	resp.Data = data
 
 	out, err := json.Marshal(resp)
-	if err != nil {
-		return "", err
-	}
 	return string(out), err
 }
 
@@ -37,8 +34,5 @@ func ErrorResponse(errorMessage string) (string, error) {
 	resp.Data = nil
 
 	out, err := json.Marshal(resp)
-	if err != nil {
-		return "", err
-	}
 	return string(out), err
 }
