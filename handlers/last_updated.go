@@ -36,10 +36,9 @@ func LastUpdatedHandler(w http.ResponseWriter, r *http.Request) {
 
 func queryLastUpdated() (db.LastUpdated, error) {
 	lastUpdated := db.LastUpdated{}
-	row := db.Conn.QueryRow(`
+	err := db.Conn.Get(&lastUpdated, `
 		SELECT id, updated_time
 		FROM fantasy.etl_updates
 	`)
-	err := row.Scan(&lastUpdated)
 	return lastUpdated, err
 }
